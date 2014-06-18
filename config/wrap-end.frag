@@ -17,8 +17,7 @@
             LivefyreJS.require.apply(self, args);
         });
     };
-    // and define
-    Livefyre.define = define;
 
+    Livefyre.emit('LivefyreJS.initialized');
     return Livefyre;
 }));

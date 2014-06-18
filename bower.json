@@ -11,10 +11,13 @@
     "debug": "visionmedia/debug#~0.7.4",
     "livefyre-auth": "Livefyre/livefyre-auth#~0.2.1",
     "livefyre-require": "git@github.com:Livefyre/require.git",
-    "streamhub-permalink": "git://github.com/Livefyre/streamhub-permalink.git"
+    "streamhub-permalink": "git://github.com/Livefyre/streamhub-permalink.git",
+    "inherits": "git://github.com/Livefyre/inherits.git",
+    "event-emitter": "git://github.com/Livefyre/event-emitter.git#~0.1.0"
   },
   "resolutions": {
     "view": "~1.1",
-    "auth": "~0.1.0"
+    "auth": "~0.1.0",
+    "event-emitter": "~0.1.0"
   }
 }
