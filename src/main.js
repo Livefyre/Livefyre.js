@@ -19,7 +19,7 @@ LFJS.require = (function (require) {
     return function (deps, callback, errback) {
         var authIndex = -1;
         for (var i = 0; i < deps.length; i++) {
-            if (/(?:auth)$|#/.test(deps[i])) {
+            if (/auth$|auth#/.test(deps[i])) {
                 authIndex = i;
                 break;
             }
