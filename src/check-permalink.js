@@ -8,7 +8,7 @@ exports.get = function () {
     return uriInterpreter.getContentPermalink();
 };
 
-var permalinkPackage = 'streamhub-permalink#0';
+var permalinkPackage = 'streamhub-permalink#0.3.3';
 
 /**
  * Load what you need to show off a permalink
@@ -18,4 +18,3 @@ exports.load = function (content) {
         console.log('loaded permalink package', PermalinkPackage);
     });
 };
-
