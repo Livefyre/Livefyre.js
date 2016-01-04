@@ -62,9 +62,6 @@ E.g. www.io.xxx?lfcdn=0&lfmin=0&lfenv=qa will fetch the non-cached, non-minified
 
 `lfbucket` It is possible to deploy to different s3 buckets for testing builds, etc: `{dev|qa|uat}` are supported by lfcdn and by this option.
 
-`lfjsUrl` It is possible to have scout fetch Livefyre.js from a specified url.
-
-
 #### Exciting! So what are the available packages and what versions should I use?
 
 The current LF packages are listed here: [packages.html](//cdn.livefyre.com/packages.html)
