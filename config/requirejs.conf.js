@@ -13,7 +13,8 @@ require.config({
     requireLib: 'lib/requirejs/require',
     semver: 'lib/semver-lite/semver.lite',
     'text': 'lib/requirejs-plugins/lib/text',
-    purl: 'lib/purl/purl'
+    purl: 'lib/purl/purl',
+    'es6-promise': 'lib/es6-promise/promise'
   },
   packages: [{
     name: 'Livefyre',

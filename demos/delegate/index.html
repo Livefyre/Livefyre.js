@@ -1,0 +1,17 @@
+<html>
+<head>
+</head>
+<body>
+    <button id="auth-button"></button>
+    <div id="auth-log"></div>
+<!-- scripts -->
+    <script src="../../lib/cajon/cajon.js"></script>
+    <script src="../../config/requirejs.conf.js"></script>
+    <script>
+        require.config({
+            baseUrl: '../../'
+        });
+        require(['demos/delegate/index']);
+    </script>
+</body>
+</html>
