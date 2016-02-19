@@ -3,6 +3,8 @@ var EventEmitter = require('event-emitter');
 var lfRequire = require('livefyre-require');
 var permalink = require('./check-permalink');
 var PermalinkHub = require('permalink-hub');
+var ccs = require('./cloud-configuration-service');
+var insightsDispatchLoader = require('./insights-dispatch-loader');
 
 // Exports .require, .define, .requirejs
 var LivefyreJS = exports = module.exports = new EventEmitter();
@@ -24,7 +26,7 @@ exports._lfjs = true;
 
  
 var permalinkModalDisabled = false;
- 
+
 LivefyreJS.on('_configurationComplete', function () {
     var contentPermalink = permalink.get();
     if (contentPermalink) {
@@ -35,7 +37,11 @@ LivefyreJS.on('_configurationComplete', function () {
         if (!permalinkModalDisabled) {
             permalink.load(contentPermalink);
         }
-    }    
+    }
+
+    // Load Cloud Configuration Service (CCS) and pass it dependent
+    // services that consume the config it eventually fetches.
+    ccs([insightsDispatchLoader]);
 });
 
 LivefyreJS.on('initialized', function () {
