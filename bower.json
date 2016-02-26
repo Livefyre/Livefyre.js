@@ -1,6 +1,6 @@
 {
   "name": "Livefyre",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "main": "dist/auth-livefyre.min.js",
   "devDependencies": {
     "almond": "0.2.6",
@@ -17,8 +17,8 @@
   },
   "resolutions": {
     "base64": "~0.4.0",
-    "auth": "~0.4.0",
     "view": "~1.3",
-    "livefyre-bootstrap": "~1.3.4"
+    "livefyre-bootstrap": "~1.3.4",
+    "auth": "^0.4.0"
   }
 }
