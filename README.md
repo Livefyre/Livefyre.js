@@ -100,41 +100,14 @@ The latest version of [Livefyre/livefyre-auth](//github.com/Livefyre/livefyre-au
 
 Powered by [streamhub-permalink](https://github.com/Joao-S-Martins/streamhub-permalink)
 
-### Cloud Configuration Service (WIP)
-
-There's functionality baked into Livefyre.js to consult the CCS to get configuration goodness. Right now it's
-hardcoded to look at a particular place for the domain whitelist, but that will eventually change (hopefully before this stuff is realeased to prod).
-
-#### How it generally works
-
-It works in a two step process (for now, until the real service is stood up):
-
-1. Consult a domain whitelist that lives in an S3 bucket. If the domain name matches one in the whitelist, it will take the URL in said whitelist and fetch that configuration file (which is just a flat file living in S3 right now). The domain white list can be found in this repo under entities/domain-whitelist.json along side the configs that are available as well.
-
-2. Pass the fetched config down to the dependent modules and invoke them so that they can be real things and can configure themselves with the provided config.
-
-#### Tricks
-
-It listens to the query param `ccs` and can be supplied with the following values:
-
-* `disabled`: This will disable the CCS and it will not load any configurations or dependent modules
-
-* A URL: It will only accept URLs that contain 'cdn.livefyre' as part of the URL. This is useful if you want to change which configuration file to load and pass to its dependents. E.g. http://livefyre-cdn-dev.something.com/path/to/config
-
 ### Insights Dispatch
 
 Much like a dispatch for a police station, the [Insights Dispatch](https://github.com/Livefyre/insights-dispatch) catches insights events and then sends them off to one or many event sinks.
-
-#### How it generally works
-
-If a configuration is passed to it and the configuration has details for the dispatch to configure itself, Insights Dispatch will be pulled down and instantiated with the provided config.
 
 #### Tricks
 
 It listens to query params `insightsDispatch` and can be supplied with the following values:
 
-* `disabled`: This will disable the loading of the Insights Dispatch module.
+* `disable`: This will disable the loading of the Insights Dispatch module.
 
-* A URL: It will only accept URLs that contain 'cdn.livefyre' as part of the URL. This is useful if you want to change which Insights Dispatch module it should load, but don't have it version-ed yet. E.g. http://livefyre-cdn-dev.something.com/path/to/module
-
-* Version number (e.g. 1.0.0-alpha): It accepts only full and specific semvers with "-TAG" as an option. Therefore, you must provide at least x.x.x, where x are integers, but can also pass a custom tag - e.g. X.X.X-TAG, "1.11.245-alpha".
+* Version number (e.g. `1.0.0-alpha`): It accepts only full and specific semvers with "-TAG" as an option. Therefore, you must provide at least x.x.x, where x are integers, but can also pass a custom tag - e.g. X.X.X-TAG, "1.11.245-alpha".
