@@ -3,7 +3,6 @@ var EventEmitter = require('event-emitter');
 var lfRequire = require('livefyre-require');
 var permalink = require('./check-permalink');
 var PermalinkHub = require('permalink-hub');
-var ccs = require('./cloud-configuration-service');
 var insightsDispatchLoader = require('./insights-dispatch-loader');
 
 // Exports .require, .define, .requirejs
@@ -39,9 +38,7 @@ LivefyreJS.on('_configurationComplete', function () {
         }
     }
 
-    // Load Cloud Configuration Service (CCS) and pass it dependent
-    // services that consume the config it eventually fetches.
-    ccs([insightsDispatchLoader]);
+    insightsDispatchLoader();
 });
 
 LivefyreJS.on('initialized', function () {
