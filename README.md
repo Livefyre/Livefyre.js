@@ -99,3 +99,15 @@ The latest version of [Livefyre/livefyre-auth](//github.com/Livefyre/livefyre-au
 ### Coming Soon: Permalinks
 
 Powered by [streamhub-permalink](https://github.com/Joao-S-Martins/streamhub-permalink)
+
+### Insights Dispatch
+
+Much like a dispatch for a police station, the [Insights Dispatch](https://github.com/Livefyre/insights-dispatch) catches insights events and then sends them off to one or many event sinks.
+
+#### Tricks
+
+It listens to query params `insightsDispatch` and can be supplied with the following values:
+
+* `disable`: This will disable the loading of the Insights Dispatch module.
+
+* Version number (e.g. `1.0.0-alpha`): It accepts only full and specific semvers with "-TAG" as an option. Therefore, you must provide at least x.x.x, where x are integers, but can also pass a custom tag - e.g. X.X.X-TAG, "1.11.245-alpha".

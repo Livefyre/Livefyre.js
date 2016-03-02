@@ -3,6 +3,7 @@ var EventEmitter = require('event-emitter');
 var lfRequire = require('livefyre-require');
 var permalink = require('./check-permalink');
 var PermalinkHub = require('permalink-hub');
+var insightsDispatchLoader = require('./insights-dispatch-loader');
 
 // Exports .require, .define, .requirejs
 var LivefyreJS = exports = module.exports = new EventEmitter();
@@ -24,7 +25,7 @@ exports._lfjs = true;
 
  
 var permalinkModalDisabled = false;
- 
+
 LivefyreJS.on('_configurationComplete', function () {
     var contentPermalink = permalink.get();
     if (contentPermalink) {
@@ -35,7 +36,9 @@ LivefyreJS.on('_configurationComplete', function () {
         if (!permalinkModalDisabled) {
             permalink.load(contentPermalink);
         }
-    }    
+    }
+
+    insightsDispatchLoader();
 });
 
 LivefyreJS.on('initialized', function () {
