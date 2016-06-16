@@ -7,9 +7,9 @@
     "name": "Benjamin Goering",
     "email": "ben@livefyre.com"
   },
-  "version": "0.7.0",
+  "version": "0.8.0",
   "dependencies": {
-    "bower": "1.3.9",
+    "bower": "1.3.8",
     "requirejs": "2.1.9"
   },
   "devDependencies": {
