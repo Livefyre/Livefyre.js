@@ -19,12 +19,9 @@ var packageName = 'streamhub-permalink';
  */
 exports.load = function (content, opt_href) {
     var href = opt_href || window.location.href;
-    var packagePath = getParam(href, 'lf-permalinkPath');
     var version = getParam(href, 'lf-permalinkVersion') || defaultVersion;
 
-    lfRequire.require([
-        packagePath ? packagePath : (packageName + '#' + version)
-    ], function (PermalinkPackage) {
+    lfRequire.require([packageName + '#' + version], function (PermalinkPackage) {
         console.log('loaded permalink package', PermalinkPackage);
     });
 };
