@@ -70,7 +70,7 @@ The current LF packages are listed here: [packages.html](//cdn.livefyre.com/pack
 
 1) Push a new version of the module to the CDN using [lfcdn](https://github.com/Livefyre/lfcdn), this will place the files at a conventional url so that Livefyre.require can find your module. The main/index file for the module should be specified in the lfpackages.json.
 
-2) Build [executor](http://build.fyre.co/jenkins/job/executor/).
+2) Build [executor](http://build.prod.livefyre.com:8080/job/executor/).
 
 3) Livefyre.require(module#{version})!
 
