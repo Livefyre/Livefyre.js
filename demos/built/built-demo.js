@@ -11,3 +11,7 @@ Livefyre.require(['livefyre-auth#0.1.0', 'auth-contrib#0.0.0-pre'], function (au
 Livefyre.require(['streamhub-input#v0.2'], function (Input) {
     console.log('Haz Input module:', Input);
 });
+
+Livefyre.require(['app-embed#1'], function(appEmbed) {
+    console.log('App embed', appEmbed)
+}, function(){},  'qa');
