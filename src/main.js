@@ -51,7 +51,7 @@ LivefyreJS.on('initialized', function () {
 
 // decorate the require function to return livefyre-auth when "auth" is asked for
 LivefyreJS.require = (function (require) {
-    return function (deps, callback, errback) {
+    return function (deps, callback, errback, env) {
         var authIndex = -1;
         for (var i = 0; i < deps.length; i++) {
             if (/auth$|auth#/.test(deps[i])) {
@@ -71,6 +71,6 @@ LivefyreJS.require = (function (require) {
         if (deps.length === 0) {
             return spliceAuthModule([]);
         }
-        return require(deps, spliceAuthModule, errback);
+        return require(deps, spliceAuthModule, errback, env);
     }
 })(LivefyreJS.require);
