@@ -22,9 +22,9 @@ exports._lfjs = true;
 })(LivefyreJS, lfRequire);
 //Do not insert code before this
 
- 
+
 var permalinkModalDisabled = false;
- 
+
 LivefyreJS.on('_configurationComplete', function () {
     var contentPermalink = permalink.get();
     if (contentPermalink) {
@@ -33,9 +33,11 @@ LivefyreJS.on('_configurationComplete', function () {
             modalDisabled: permalinkModalDisabled
         });
         if (!permalinkModalDisabled) {
-            permalink.load(contentPermalink);
+            permalink.load(contentPermalink, null, setupRequire);
+            return;
         }
-    }    
+    }
+    setupRequire();
 });
 
 LivefyreJS.on('initialized', function () {
@@ -44,33 +46,35 @@ LivefyreJS.on('initialized', function () {
             permalinkModalDisabled = true;
         }
     });
- 
+
     LivefyreJS.emit('_configurationComplete');
 });
 
 
 // decorate the require function to return livefyre-auth when "auth" is asked for
-LivefyreJS.require = (function (require) {
-    return function (deps, callback, errback, env) {
-        var authIndex = -1;
-        for (var i = 0; i < deps.length; i++) {
-            if (/auth$|auth#/.test(deps[i])) {
-                authIndex = i;
-                break;
+function setupRequire() {
+    LivefyreJS.require = (function (require) {
+        return function (deps, callback, errback, env) {
+            var authIndex = -1;
+            for (var i = 0; i < deps.length; i++) {
+                if (/auth$|auth#/.test(deps[i])) {
+                    authIndex = i;
+                    break;
+                }
             }
-        }
-        function spliceAuthModule() {
+            function spliceAuthModule() {
+                if (authIndex > -1) {
+                    Array.prototype.splice.call(arguments, authIndex, 0, auth);
+                }
+                callback.apply(this, arguments);
+            }
             if (authIndex > -1) {
-                Array.prototype.splice.call(arguments, authIndex, 0, auth);
+                deps.splice(authIndex, 1);
             }
-            callback.apply(this, arguments);
+            if (deps.length === 0) {
+                return spliceAuthModule([]);
+            }
+            return require(deps, spliceAuthModule, errback, env);
         }
-        if (authIndex > -1) {
-            deps.splice(authIndex, 1);
-        }
-        if (deps.length === 0) {
-            return spliceAuthModule([]);
-        }
-        return require(deps, spliceAuthModule, errback, env);
-    }
-})(LivefyreJS.require);
+    })(LivefyreJS.require);
+}
