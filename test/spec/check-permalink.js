@@ -3,7 +3,7 @@ var permalink = require('Livefyre/check-permalink');
 var expect = require('chai').expect;
 var sinon = require('sinon');
 
-describe.only('src/check-permalink', function () {
+describe('src/check-permalink', function () {
     it('gets the dynamic version from a query param', function () {
         var spy = sinon.spy(Livefyre, 'require');
         permalink.load(null, 'http://abc.com/?lf-permalinkVersion=0.1.2');
