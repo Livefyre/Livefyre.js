@@ -21,5 +21,6 @@ describe('Livefyre', function () {
                 done();
             });
         });
+        Livefyre.emit('initialized');
     });
 });

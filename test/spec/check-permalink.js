@@ -19,4 +19,12 @@ describe('src/check-permalink', function () {
         expect(spy.lastCall.args[0][0]).to.match(/^\/\/cdn\.livefyre\.com\/libs\/streamhub-permalink\/v0\.\d\.\d\/streamhub-permalink\.min\.js/);
         spy.restore();
     });
+
+    it('returns a callback when done', function () {
+        var spy = sinon.spy(Livefyre, 'require');
+        var done = function () {};
+        permalink.load(null, null, done);
+        expect(spy.callCount).to.equal(1);
+        expect(spy.lastCall.args[1]).to.equal(done);
+    });
 });
