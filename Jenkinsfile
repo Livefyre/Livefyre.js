@@ -4,6 +4,7 @@ deploy:
   image:
     label: corpjenkins/node
   confirm: true
+  git: true
   commands:
     - make clean dist
   lfcdn:
