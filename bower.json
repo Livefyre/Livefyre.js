@@ -1,15 +1,15 @@
 {
   "name": "Livefyre",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "main": "dist/auth-livefyre.min.js",
   "devDependencies": {
     "almond": "0.2.6",
     "cajon": "git@github.com:requirejs/cajon.git#~0.1.11",
-    "sinonjs": "~1.7.3"
+    "sinonjs": "~1.17.1"
   },
   "dependencies": {
     "debug": "visionmedia/debug#~0.7.4",
-    "livefyre-auth": "Livefyre/livefyre-auth#^0.10.4",
+    "livefyre-auth": "Livefyre/livefyre-auth#^0.10.6",
     "livefyre-require": "git@github.com:Livefyre/require.git#1.1.2",
     "streamhub-permalink": "git://github.com/Livefyre/streamhub-permalink.git",
     "event-emitter": "git://github.com/Livefyre/event-emitter.git#~0.0.5",
@@ -17,9 +17,9 @@
   },
   "resolutions": {
     "base64": "~0.4.0",
-    "auth": "~0.4.0",
+    "auth": "~0.4.1",
     "view": "~1.4.1",
-    "livefyre-bootstrap": "~1.4.15",
+    "livefyre-bootstrap": "~1.5.7",
     "event-emitter": "~0.1.0"
   }
 }
