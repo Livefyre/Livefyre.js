@@ -14,7 +14,7 @@
   },
   "devDependencies": {
     "chai": "1.8.1",
-    "jshint": "~1.1.0",
+    "jshint": "2.9.7",
     "mocha": "1.14.0",
     "mocha-phantomjs": "3.1.6",
     "phantomjs": "*",
